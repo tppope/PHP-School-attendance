@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+
+    <title>Dochádzka</title>
+
+    <link rel="icon" href="resources/pictures/favicon/curl-logo.png" type="image/gif" sizes="16x16">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="javascript/script.js"></script>
+</head>
+<body>
+<header id="main-header">
+    <h1 id="main-h1">
+        Dochádzka
+    </h1>
+</header>
+<section id="main-section">
+    <div id="loading-screen">
+        <lottie-player id="loading-animation" src="resources/animations/lf30_editor_ackl2con.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"  loop  autoplay></lottie-player>
+    </div>
+    <header id="main-section-header">
+        <div id="graph-button" onclick="showGraph()">
+            <img id="graph-button-img" src="resources/pictures/trend.svg" alt="graph-button" width="25" height="25" >
+        </div>
+        <div id="lottie-hover" onclick="loadData()">
+            <lottie-player id="refresh-lottie" src="https://assets7.lottiefiles.com/packages/lf20_n5vnn06i.json"  background="transparent"  speed="1"  style="width: 40px; height: 40px;" loop  ></lottie-player>
+        </div>
+    </header>
+    <div id="main-table-div" class="table-responsive">
+        <table id="main-table" class="table">
+            <thead class="green-thead">
+            <tr>
+                <th id="sort-surname" class="sortable">
+                    <div>
+                        Meno študenta
+                        <div class="sort-arrows">
+                            <img src="resources/pictures/up-arrow.svg" width="9" height="9" alt="up-arrow">
+                            <img src="resources/pictures/down-arrow.svg" width="9" height="9" alt="down-arrow">
+                        </div>
+                    </div>
+                </th>
+                <th id="put-lectures-before-me" class="sortable">
+                    <div>
+                        Počet účastí
+                        <div class="sort-arrows">
+                            <img src="resources/pictures/up-arrow.svg" width="9" height="9" alt="up-arrow">
+                            <img src="resources/pictures/down-arrow.svg" width="9" height="9" alt="down-arrow">
+                        </div>
+                    </div>
+                </th>
+                <th id="sort-minutes" class="sortable">
+                    <div>
+                        Počet minút
+                        <div class="sort-arrows">
+                            <img src="resources/pictures/up-arrow.svg" width="9" height="9" alt="up-arrow">
+                            <img src="resources/pictures/down-arrow.svg" width="9" height="9" alt="down-arrow">
+                        </div>
+                    </div>
+                </th>
+            </tr>
+            </thead>
+            <tbody id="table-body">
+
+            </tbody>
+        </table>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="attendance-detail" tabindex="-1" role="dialog" aria-labelledby="attendance-detail"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <header>
+                        <h5 class="modal-title" id="attendance-detail-title"></h5>
+                        <ul id="user-info">
+                        </ul>
+                    </header>
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <header>
+                        <h6 id="lecture-detail-title"></h6>
+                        <div id="user-info-table" class="table-responsive">
+                            <table class="table">
+                                <thead class="green-thead">
+                                <tr>
+                                <th>#</th>
+                                <th>Príchod</th>
+                                <th>Odchod</th>
+                                </tr>
+                                </thead>
+                                <tbody id="user-info-tbody">
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </header>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="attendance-graph" tabindex="-1" role="dialog" aria-labelledby="attendance-graph"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <header>
+                        <h5 class="modal-title" id="attendance-graph-title">Počet študentov na prednáškach</h5>
+                    </header>
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <canvas id="myChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<footer>
+    <span>Designed by <a id="footer-href" href="http://147.175.121.202/~xpopikt/7243zadanie1/index.html">Tomáš Popík &copy; </a></span>
+</footer>
+
+</body>
+</html>

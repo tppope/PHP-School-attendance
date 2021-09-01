@@ -1,0 +1,185 @@
+html, body{
+    margin: 0;
+    padding: 0;
+    background: #f0f0f0;
+}
+html{
+    position: relative;
+    min-height: 100%;
+}
+#main-header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    height: 150px;
+}
+#main-h1{
+    font-family: "Roboto",sans-serif;
+    font-size: 45px;
+    font-weight: bold;
+    font-style: normal;
+    color: #004953;
+    text-align: center;
+}
+#main-section{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 80px;
+    height: 100%;
+}
+#loading-screen{
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    background-color: rgba(0, 73, 83, 0.5);
+    top: 0;
+    left: 0;
+    z-index: 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 1000ms;
+}
+#main-table-div{
+    width: 96%;
+    background-color: white;
+}
+th{
+    white-space: nowrap;
+}
+footer{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    height: 60px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.green-thead th{
+    background-color: #004953;
+    color: white;
+}
+thead th{
+    text-align: center;
+    vertical-align: middle !important;
+}
+#table-body{
+    color: black;
+}
+.clickable-td{
+    transition: background-color 300ms;
+    cursor: pointer;
+}
+.clickable-td:hover{
+    background-color: rgba(0, 73, 83, 0.3)
+}
+#attendance-detail-title{
+    font-family: "Roboto",sans-serif;
+    font-size: 35px;
+    font-weight: bold;
+    font-style: normal;
+    color: #004953;
+}
+#attendance-graph-title{
+    font-family: "Roboto",sans-serif;
+    font-size: 35px;
+    font-weight: bold;
+    font-style: normal;
+    color: #004953;
+}
+#user-info{
+    font-family: "Roboto",sans-serif;
+    font-size: 15px;
+    font-weight: normal;
+    font-style: normal;
+    color: black;
+    margin: 0;
+    padding-left: 17px;
+}
+#lecture-detail-title{
+    font-family: "Roboto",sans-serif;
+    font-size: 25px;
+    font-weight: bold;
+    font-style: normal;
+    color: black;
+}
+#user-info-table{
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    background-color: #f0f0f0;
+}
+#notAttend{
+    font-family: "Roboto",sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    font-style: normal;
+    color: black;
+}
+.sortable{
+    cursor: pointer;
+    transition: background-color 300ms;
+}
+.sortable:hover{
+    background-color: rgba(0, 73, 83, 0.9) !important;
+}
+.sortable > div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.sort-arrows{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 3px;
+}
+.sort-arrows img{
+    visibility: visible;
+    filter: invert(94%) sepia(39%) saturate(0%) hue-rotate(358deg) brightness(112%) contrast(100%);
+}
+#main-section-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 96%;
+    margin: 10px 0 5px;
+}
+#refresh-lottie{
+    transition: width 300ms, height 300ms;
+}
+#lottie-hover{
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+#lottie-hover:hover #refresh-lottie{
+    width: 50px !important;
+    height: 50px !important;
+}
+#graph-button {
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+#graph-button-img{
+    transition: width 300ms, height 300ms, filter 1000ms;
+}
+#graph-button:hover #graph-button-img{
+    width: 30px;
+    height: 30px;
+    filter: invert(23%) sepia(18%) saturate(3361%) hue-rotate(148deg) brightness(91%) contrast(104%);
+}
